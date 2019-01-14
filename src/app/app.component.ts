@@ -11,5 +11,6 @@ export class AppComponent {
 
   addTodo(newTodo) {
     console.log(newTodo.value);
+    newTodo.value = '';
   }
 }
