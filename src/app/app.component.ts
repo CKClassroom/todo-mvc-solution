@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'todomvc';
   newTodoPlaceholder = 'What needs to be done?';
+
+  addTodo(newTodo) {
+    console.log(newTodo.value);
+  }
 }
