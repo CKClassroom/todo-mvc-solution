@@ -6,10 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  today = new Date();
   title = 'todomvc';
   newTodoPlaceholder = 'What needs to be done?';
 
-  newTodo = '';
+  filterCondition = 'all';
   todos: Todo[] = [
     {
       id: 1,
@@ -42,15 +43,13 @@ export class AppComponent {
     this.todos = this.todos.filter(x => !x.isCompleted);
   }
 
-  addTodo() {
+  addTodo(newTodo) {
     this.todos.push({
       id: ++this.maxId,
-      item: this.newTodo,
+      item: newTodo,
       isCompleted: false,
       isEditing: false
     });
-    // console.log(this.todos);
-    this.newTodo = '';
   }
 
   toggleComplete(todo: Todo) {
@@ -82,7 +81,6 @@ export class AppComponent {
   // Mark all as complete
   toggleAllComplete(event) {
     // console.log(this.toggleStatus);
-    console.dir(event.target.checked);
     this.todos.forEach(x => (x.isCompleted = true));
 
     // this.todos = this.todos.map(todo => ({ ...todo, isCompleted: true }));
